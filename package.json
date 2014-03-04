@@ -1,0 +1,32 @@
+{
+  "name": "BracketGenerator",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*"
+  },
+  "description": "BracketGenerator ================",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JamesKohli/BracketGenerator.git"
+  },
+  "keywords": [
+    "NCAA",
+    "March",
+    "Madness",
+    "Bracket",
+    "Generator",
+    "Bracket"
+  ],
+  "author": "James Kohli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamesKohli/BracketGenerator/issues"
+  },
+  "homepage": "https://github.com/JamesKohli/BracketGenerator"
+}
