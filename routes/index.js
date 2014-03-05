@@ -17,6 +17,6 @@ exports.index = function(array){
 		})
 
 		res.render('index', { title: 'Bracket Generator', predictions: table});
-		console.log(table)
+		console.log('rendering table on client machine')
 	}
 }
