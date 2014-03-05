@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -8,6 +7,8 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var fs = require('fs');
+var csv = require('csv');
 
 var app = express();
 
@@ -28,6 +29,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//Read in default probability array
+var probabilities;
+ 
+csv()
+.from.path(__dirname+'/Predictions.csv', { delimiter: ',', escape: '"' })
+.to.array( function(data){
+probabilities = data;
+console.log(probabilities);
+})
+
+//routing
 app.get('/', routes.index);
 app.get('/users', user.list);
 

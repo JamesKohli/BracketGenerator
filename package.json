@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "express": "3.4.8",
-    "jade": "*"
+    "jade": "*",
+    "csv": "^0.3.7"
   },
   "description": "BracketGenerator ================",
   "main": "app.js",
