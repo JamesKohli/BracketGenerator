@@ -7,7 +7,6 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var fs = require('fs');
 var csv = require('csv');
 
 var app = express();
@@ -30,18 +29,18 @@ if ('development' == app.get('env')) {
 }
 
 //Read in default probability array
-var probabilities;
- 
 csv()
-.from.path(__dirname+'/Predictions.csv', { delimiter: ',', escape: '"' })
-.to.array( function(data){
-probabilities = data;
-console.log(probabilities);
+	.from.path(__dirname+'/Predictions.csv', { delimiter: ',', escape: '"' })
+	.to.array( function(data){
+	console.log('Reading in Predictions.csv')
+	routing(data);
 })
 
+function routing(probabilities){
 //routing
-app.get('/', routes.index);
+app.get('/', routes.index(probabilities));
 app.get('/users', user.list);
+}
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

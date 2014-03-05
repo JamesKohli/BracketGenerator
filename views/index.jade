@@ -1,5 +1,23 @@
 extends layout
 
+block scripts
+	script.
+		$(document).ready(function(){ 
+		var table = ""
+		var predictions = '#{predictions}'
+		function htmlDecode(input){
+			var e = document.createElement('div');
+			e.innerHTML = input;
+			return e.childNodes[0].nodeValue;
+		}
+		//convert sanitized html to actual html
+		tableHtml = htmlDecode(predictions)
+		console.log(tableHtml)	
+		console.log('hi')
+		$('#predictionsTable').append(tableHtml)
+		})
 block content
-  h1= title
-  p Welcome to #{title}
+	div.jumbotron
+		h1= title
+		p James's #{title}
+	table.table.table-striped.table-bordered#predictionsTable
