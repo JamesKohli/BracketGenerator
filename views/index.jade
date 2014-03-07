@@ -3,6 +3,7 @@ extends layout
 block scripts
 	script.
 		$(document).ready(function(){ 
+		//generate table of the odds csv we loaded
 		var table = ""
 		var predictions = '#{predictions}'
 		function htmlDecode(input){
@@ -10,15 +11,18 @@ block scripts
 			e.innerHTML = input;
 			return e.childNodes[0].nodeValue;
 		}
-		//convert sanitized html to actual html
+		//convert sanitized html to actual html and insert our predictions table
 		tableHtml = htmlDecode(predictions)
-		console.log(tableHtml)	
-		console.log('hi')
-		$('#predictionsTable').append(tableHtml)
+		$('#predictionsTable').append(tableHtml)	
 		})
+	script(src="js/jquerybracket.js")
+	link(rel='stylesheet', href='/css/bracket.css')
+	script(src="js/bracketgen.js")
 block content
 	div.container
 		div.jumbotron
 			h1= title
 			p James's #{title}
-		table.table.table-striped.table-bordered#predictionsTable
+			button.btn.btn-primary.btn-large#simulate Simulate a round!
+		div#bracket
+		//table.table.table-striped.table-bordered#predictionsTable
