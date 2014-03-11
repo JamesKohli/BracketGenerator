@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
 //define our team list!
-var teams = ['Team #1 (1)', 'Team #2 (16)', 'Team #3 (8)', 'Team #4 (9)', 'Team #5 (5)', 'Team #6 (12)', 'Team #7 (4)', 'Team #8 (13)', 
-		'Team #9 (6)', 'Team #10 (11)', 'Team #11 (3)', 'Team #12 (14)', 'Team #13 (7)', 'Team #14 (10)', 'Team #15 (2)', 'Team #16 (15)', 
-		'Team #17 (1)', 'Team #18 (2)', 'Team #19 (3)', 'Team #20 (4)', 'Team #21 (5)', 'Team #22 (6)', 'Team #23 (7)', 'Team #24 (8)', 
-		'Team #25 (9)', 'Team #26 (10)', 'Team #27 (11)', 'Team #28 (12)', 'Team #29 (13)', 'Team #30 (14)', 'Team #31 (15)', 'Team #32 (16)', 
-		'Team #33 (1)', 'Team #34 (2)', 'Team #35 (3)', 'Team #36 (4)', 'Team #37 (5)', 'Team #38 (6)', 'Team #39 (7)', 'Team #40 (8)', 
-		'Team #41 (9)', 'Team #42 (10)', 'Team #43 (11)', 'Team #44 (12)', 'Team #45 (13)', 'Team #46 (14)', 'Team #47 (15)', 'Team #48 (16)', 
-		'Team #49 (1)', 'Team #50 (2)', 'Team #51 (3)', 'Team #52 (4)', 'Team #53 (5)', 'Team #54 (6)', 'Team #55 (7)', 'Team #56 (8)', 
-		'Team #57 (9)', 'Team #58 (10)', 'Team #59 (11)', 'Team #60 (12)', 'Team #61 (13)', 'Team #62 (14)', 'Team #63 (15)', 'Team #64 (16)']
+var teams = [' #1 (1)', ' #2 (16)', ' #3 (8)', ' #4 (9)', ' #5 (5)', ' #6 (12)', ' #7 (4)', ' #8 (13)', 
+		' #9 (6)', ' #10 (11)', ' #11 (3)', ' #12 (14)', ' #13 (7)', ' #14 (10)', ' #15 (2)', ' #16 (15)', 
+' #17 (1)', ' #18 (16)', ' #19 (8)', ' #20 (9)', ' #21 (5)', ' #22 (12)', ' #23 (4)', ' #24 (13)', 
+		' #25 (6)', ' #26 (11)', ' #27 (3)', ' #28 (14)', ' #29 (7)', ' #30 (10)', ' #31 (2)', ' #32 (15)', 
+' #33 (1)', ' #34 (16)', ' #35 (8)', ' #36 (9)', ' #37 (5)', ' #38 (12)', ' #39 (4)', ' #40 (13)', 
+		' #41 (6)', ' #42 (11)', ' #43 (3)', ' #44 (14)', ' #45 (7)', ' #46 (10)', ' #47 (2)', ' #48 (15)', 
+' #49(1)', ' #50 (16)', ' #51 (8)', ' #52 (9)', ' #53 (5)', ' #54 (12)', ' #55 (4)', ' #56 (13)', 
+		' #57 (6)', ' #58 (11)', ' #59 (3)', ' #60 (14)', ' #61 (7)', ' #62 (10)', ' #63 (2)', ' #64 (15)', ]
 	
 var seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
 			1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
@@ -19,6 +19,8 @@ var seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15,
 //set up inital matchups
 var matchups = []
 var seedMatchups = []
+var results = []
+var resultCounter = 0;
 for (var n=0;n<teams.length;n+=2){
 	var newMatchup = [teams[n], teams[n + 1]]
 	var seedMatchup = [seeds[n], seeds[n+1]]
@@ -28,12 +30,113 @@ for (var n=0;n<teams.length;n+=2){
 	seedMatchups.push(seedMatchup);
 }
 
-var tournament = { teams: matchups, seeds: seedMatchups, results: []}
+var tournament = { teams: matchups, results: []}
+console.log(tournament)
+
+//on button press
+$('#simulateRound').click(function(){
+	simulateRound()
+	refreshBracket();
+});
+
+$('#simulateTournament').click(function(){
+	resetBracket();
+	for (var x=0; x<6; x++){
+		simulateRound();
+	
+	}
+	refreshBracket();	
+})
+$('#resetBracket').click(function() {resetBracket()})
+
+function simulateRound() {
+	console.log('Running round simulation')
+	roundResults = {scores: [], nextSeeds: []};
+	//iterate through each matchup
+	for (var x=0; x<seedMatchups.length; x++){
+		//get the seeds
+		//get the probability for those seeds
+		var highSeed = Math.min(seedMatchups[x][0], seedMatchups[x][1])
+		var lowSeed = Math.max(seedMatchups[x][0], seedMatchups[x][1])	
+		var upsetPercentage = $('#'+ lowSeed + '-' + highSeed).text()
+		console.log('High seed ' + highSeed + ' vs low seed ' + lowSeed + ' with upset % ' + upsetPercentage);
+	
+		//calculate who won 
+		//push results
+		//push matchup and seeds
+		var matchupResult = [1, 1]
+		
+		//Handle mirror matchups
+		if (highSeed == lowSeed){
+			console.log('Mirror matchup!')
+			if (Math.random() > .5){
+				roundResults.scores.push([1,2])
+			} else {
+				roundResults.scores.push([2,1])
+			}
+			
+			roundResults.nextSeeds.push(highSeed)
+		} else if (Math.random() > upsetPercentage)
+		{
+			matchupResult[seedMatchups[x].indexOf(highSeed)] = 2
+			//console.log(matchupResult)
+			roundResults.scores.push(matchupResult)
+			roundResults.nextSeeds.push(highSeed)
+			
+		} else {
+			matchupResult[seedMatchups[x].indexOf(lowSeed)] = 2
+			//console.log(matchupResult)
+			roundResults.scores.push(matchupResult)
+			roundResults.nextSeeds.push(lowSeed)
+		}		
+		
+	}
+	
+	//set up next seedMatchups
+	seedMatchups = []
+	for (var x=0; x<roundResults.nextSeeds.length; x+=2){
+		seedMatchups.push([roundResults.nextSeeds[x], roundResults.nextSeeds[x+1]])
+	}
+	
+	//update results and bracket
+	console.log(roundResults)
+	results.push(roundResults.scores)
+	tournament.results= results;
+	
+
+}
 
 
-$(function() {
-    $('#bracket').bracket({
-      init: tournament /* data to initialize the bracket with */ })
-  })
+function resetBracket(){
+	//reset tourney
+	console.log('Resetting bracket');
+	matchups = []
+	seedMatchups = []
+	results = []
+	resultCounter = 0;
+	for (var n=0;n<teams.length;n+=2){
+		var newMatchup = [teams[n], teams[n + 1]]
+		var seedMatchup = [seeds[n], seeds[n+1]]
+		
+		console.log('creating matchup ' + newMatchup)
+		matchups.push(newMatchup);
+		seedMatchups.push(seedMatchup);
+	}
+	
+	tournament = { teams: matchups, results: []}
+	refreshBracket()
+
+}
+
+
+function refreshBracket() {
+	var $bracket = $('#bracket');
+	$bracket.empty()
+    $bracket.bracket({
+	  skipConsolationRound: true,
+      init: tournament  })
+  }
+
+refreshBracket();
   
 })
