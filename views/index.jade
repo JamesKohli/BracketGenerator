@@ -23,8 +23,12 @@ block content
 		div.jumbotron
 			h1= title
 			p James's #{title}
-			button.btn.btn-primary.btn-large#simulateRound Simulate a round!
-			button.btn.btn-primary.btn-large#simulateTournament Simulate a tournament!
-			button.btn.btn-primary.btn-large#resetBracket Reset the tournament
+			p
+				button.btn.btn-default.btn-lg#simulateRound(type="button") Simulate a round!
+				button.btn.btn-default.btn-lg#resetBracket(type="button") Reset the tournament
+			p
+				button.btn.btn-primary.btn-lg.btn-block#simulateTournament(type="button") Simulate a tournament!
+		h1 2014 NCAA Tournament Bracket
 		div#bracket
+		h3 Seeding Matchup Probabilities
 		table.table.table-striped.table-bordered#predictionsTable
