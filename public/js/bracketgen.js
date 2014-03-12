@@ -20,31 +20,32 @@ var seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15,
 var matchups = []
 var seedMatchups = []
 var results = []
-var resultCounter = 0;
+//iterate through the list of teams, and pair them off into matchups 2 at a time
 for (var n=0;n<teams.length;n+=2){
 	var newMatchup = [teams[n], teams[n + 1]]
 	var seedMatchup = [seeds[n], seeds[n+1]]
 	
 	console.log('creating matchup ' + newMatchup)
+	//take our new matchup and add it to our list of matchups
 	matchups.push(newMatchup);
 	seedMatchups.push(seedMatchup);
 }
 
+//using these matchups, create a tournament object. It has no results yet.
 var tournament = { teams: matchups, results: []}
 console.log(tournament)
+refreshBracket();
 
 //on button press
 $('#simulateRound').click(function(){
 	simulateRound()
 	refreshBracket();
 });
-
 $('#simulateTournament').click(function(){
-	resetBracket();
+	resetBracket();	
 	for (var x=0; x<6; x++){
 		simulateRound();
-	
-	}
+	}	
 	refreshBracket();	
 })
 $('#resetBracket').click(function() {resetBracket()})
@@ -59,13 +60,11 @@ function simulateRound() {
 		var highSeed = Math.min(seedMatchups[x][0], seedMatchups[x][1])
 		var lowSeed = Math.max(seedMatchups[x][0], seedMatchups[x][1])	
 		var upsetPercentage = $('#'+ lowSeed + '-' + highSeed).text()
-		console.log('High seed ' + highSeed + ' vs low seed ' + lowSeed + ' with upset % ' + upsetPercentage);
-	
+		console.log('High seed ' + highSeed + ' vs low seed ' + lowSeed + ' with upset % ' + upsetPercentage);	
 		//calculate who won 
 		//push results
 		//push matchup and seeds
-		var matchupResult = [1, 1]
-		
+		var matchupResult = [1, 1]		
 		//Handle mirror matchups
 		if (highSeed == lowSeed){
 			console.log('Mirror matchup!')
@@ -73,8 +72,7 @@ function simulateRound() {
 				roundResults.scores.push([1,2])
 			} else {
 				roundResults.scores.push([2,1])
-			}
-			
+			}			
 			roundResults.nextSeeds.push(highSeed)
 		} else if (Math.random() > upsetPercentage)
 		{
@@ -88,22 +86,17 @@ function simulateRound() {
 			//console.log(matchupResult)
 			roundResults.scores.push(matchupResult)
 			roundResults.nextSeeds.push(lowSeed)
-		}		
-		
-	}
-	
+		}				
+	}	
 	//set up next seedMatchups
 	seedMatchups = []
 	for (var x=0; x<roundResults.nextSeeds.length; x+=2){
 		seedMatchups.push([roundResults.nextSeeds[x], roundResults.nextSeeds[x+1]])
-	}
-	
+	}	
 	//update results and bracket
 	console.log(roundResults)
 	results.push(roundResults.scores)
 	tournament.results= results;
-	
-
 }
 
 
@@ -113,19 +106,15 @@ function resetBracket(){
 	matchups = []
 	seedMatchups = []
 	results = []
-	resultCounter = 0;
 	for (var n=0;n<teams.length;n+=2){
 		var newMatchup = [teams[n], teams[n + 1]]
-		var seedMatchup = [seeds[n], seeds[n+1]]
-		
+		var seedMatchup = [seeds[n], seeds[n+1]]		
 		console.log('creating matchup ' + newMatchup)
 		matchups.push(newMatchup);
 		seedMatchups.push(seedMatchup);
-	}
-	
+	}	
 	tournament = { teams: matchups, results: []}
 	refreshBracket()
-
 }
 
 
@@ -137,6 +126,6 @@ function refreshBracket() {
       init: tournament  })
   }
 
-refreshBracket();
+
   
 })
