@@ -50,6 +50,20 @@ $('#simulateTournament').click(function(){
 })
 $('#resetBracket').click(function() {resetBracket()})
 
+//validation for inputs
+$('input').change(function() {
+    $input = $(this);
+	n= $input.val()
+	console.log(n)
+	if (!isNaN(parseFloat(n)) && isFinite(n) && n <= 1 && n >= 0){
+		console.log('Valid input')
+		$input.parent('td').removeClass('has-error').addClass('has-success');		
+	} else {
+		console.log('Invalid input')
+		$input.parent('td').removeClass('has-success').addClass('has-error');		
+	}
+})
+
 function simulateRound() {
 	console.log('Running round simulation')
 	roundResults = {scores: [], nextSeeds: []};
@@ -59,7 +73,7 @@ function simulateRound() {
 		//get the probability for those seeds
 		var highSeed = Math.min(seedMatchups[x][0], seedMatchups[x][1])
 		var lowSeed = Math.max(seedMatchups[x][0], seedMatchups[x][1])	
-		var upsetPercentage = $('#'+ lowSeed + '-' + highSeed).text()
+		var upsetPercentage = $('#'+ lowSeed + '-' + highSeed).val()
 		console.log('High seed ' + highSeed + ' vs low seed ' + lowSeed + ' with upset % ' + upsetPercentage);	
 		//calculate who won 
 		//push results
