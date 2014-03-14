@@ -38,10 +38,20 @@ refreshBracket();
 
 //on button press
 $('#simulateRound').click(function(){
+	if ($('td').hasClass('has-error')){
+		console.log('Error with probabilities chart')
+		alert('Please fix errors in probabilities chart. All values must be numbers between 0 and 1. You can refresh the page to reset the defaults.')
+		return;
+	}
 	simulateRound()
 	refreshBracket();
 });
 $('#simulateTournament').click(function(){
+	if ($('td').hasClass('has-error')){
+		console.log('Error with probabilities chart')
+		alert('Please fix errors in probabilities chart. All values must be numbers between 0 and 1. You can refresh the page to reset the defaults.')
+		return;
+	}
 	resetBracket();	
 	for (var x=0; x<6; x++){
 		simulateRound();
@@ -66,6 +76,8 @@ $('input').change(function() {
 
 function simulateRound() {
 	console.log('Running round simulation')
+	
+	
 	roundResults = {scores: [], nextSeeds: []};
 	//iterate through each matchup
 	for (var x=0; x<seedMatchups.length; x++){

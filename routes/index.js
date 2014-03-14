@@ -21,7 +21,7 @@ exports.index = function(array){
 				if (colCount > rowCount){
 					table = table.concat('<td> <fieldset disabled><input type="number" class="form-control"></input></fieldset></td>')
 				} else {
-					table = table.concat('<td> <input id=' + rowCount + '-' + colCount + ' type="number" class="form-control" value="' + column + '"></input></td>')
+					table = table.concat('<td> <input id=' + rowCount + '-' + colCount + ' type="text" class="form-control" value="' + column + '"></input></td>')
 				}
 			})
 			table = table.concat('</tr>');
