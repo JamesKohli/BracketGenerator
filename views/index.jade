@@ -30,7 +30,11 @@ block content
 	div.container
 		div.jumbotron
 			h1= title
-			p James's #{title}
+			p.  <br/>
+				This is a bracket generator designed to create realistic results for a March Madness style bracket. It calculates winners based on the upset % for the given matchup in the table at the bottom of the page. <br/> <br/>
+				These %s were generated using the method described <a href="http://jameskohli.tumblr.com/post/78489177222/lets-build-a-march-madness-bracket-generator-to-win-a">here</a>, but can be freely edited below to create different outcomes. 
+				This project is open source, and the code lives at <a href="https://github.com/JamesKohli/BracketGenerator">https://github.com/JamesKohli/BracketGenerator</a>. I also wrote <a href="http://jameskohli.tumblr.com/post/78489177222/lets-build-a-march-madness-bracket-generator-to-win-a">a</a> <a href="http://jameskohli.tumblr.com/post/78746152257/lets-build-a-march-madness-bracket-generator-for-fun">series</a> <a href="http://jameskohli.tumblr.com/post/79396109921/lets-build-a-march-madness-bracket-generator-or-how">of</a> <a href="">posts</a> explaining the logic and code behind each step of the site.<br/><br/>
+				Enjoy! If everyone in the world used this machine to fill out a bracket, nobody would produce the same outcome. <br/> <br/>
 			p
 				button.btn.btn-default.btn-lg#simulateRound(type="button") Simulate a round!
 				button.btn.btn-default.btn-lg#resetBracket(type="button") Reset the tournament
@@ -39,6 +43,7 @@ block content
 		h1 2014 NCAA Tournament Bracket (teams not yet announced)
 		div#bracket
 	h3 Seeding Upset Probabilities (%)
+	h6 You can edit these by entering another probability between 0 and 1
 	table.table.table-striped.table-bordered#predictionsTable
 		tr
 			th Seeds
