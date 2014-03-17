@@ -96,6 +96,7 @@ function simulateRound() {
 			console.log('Mirror matchup!')
 			if (Math.random() > .5){
 				roundResults.scores.push([1,2])
+				//roundResults.nextTeams.push
 			} else {
 				roundResults.scores.push([2,1])
 			}			
@@ -143,13 +144,46 @@ function resetBracket(){
 	refreshBracket()
 }
 
+function setTeamsTable(){
+var teamsHtml = ""
+
+	teams.forEach(function(team){
+		teamsHtml = teamsHtml.concat('<tr><td>'+team+'</td><td><input id="' + team + 'hcap" value="0" type="number" class="form-control"></input></td></tr>')
+	})
+
+$('#teams').append(teamsHtml);
+}
+
+function createSeedHandicaps(){
+
+}
+
+//setTeamsTable()
+
+/* Called whenever bracket is modified
+ *
+ * data:     changed bracket object in format given to init
+ * userData: optional data given when bracket is created.
+ */
+function saveFn(data, userData) {
+  var json = jQuery.toJSON(data)
+  $('#saveOutput').text('POST '+userData+' '+json)
+  /* You probably want to do something like this
+  jQuery.ajax("rest/"+userData, {contentType: 'application/json',
+                                dataType: 'json',
+                                type: 'post',
+                                data: json})
+  */
+}
 
 function refreshBracket() {
 	var $bracket = $('#bracket');
 	$bracket.empty()
     $bracket.bracket({
 	  skipConsolationRound: true,
-      init: tournament  })
+      init: tournament,
+	  save: saveFn,
+      userData: "http://myapi"})
   }
 
 

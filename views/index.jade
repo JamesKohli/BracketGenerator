@@ -40,9 +40,15 @@ block content
 				button.btn.btn-default.btn-lg#resetBracket(type="button") Reset the tournament
 			p
 				button.btn.btn-primary.btn-lg.btn-block#simulateTournament(type="button") Simulate a tournament!
-		h1 2014 NCAA Tournament Bracket 
+		h1 2014 NCAA Tournament Bracket (click scores to edit individual outcomes) 
 		div#bracket
 	div.container-fluid
+		//h3 Team handicaps
+		//h6 You can alter team skills here by entering a number between -1 (never wins) and 1 (always wins). A better than average team should probably get a bump in the range of .05-.1
+		//table.table.table-striped.table-bordered#teams
+			//tr
+				//th Team
+				//th handicap
 		h3 Seeding Upset Probabilities (%)
 		h6 You can edit these by entering another probability between 0 and 1
 		table.table.table-striped.table-bordered#predictionsTable
