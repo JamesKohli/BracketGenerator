@@ -7,8 +7,8 @@ var teams = ['(1) FLA', '(16) ALBY', '(8) COLO', '(9) PITT', '(5) VCU', '(12) SF
 		'(6) UNC', '(11) PROV', '(3) ISU', '(14) NCCU', '(7) CONN', '(10) JOES', '(2) VILL', '(15) MILW', 
 '(1) ARIZ', '(16) WEB', '(8) GONZ', '(9) OKST', '(5) OKLA', '(12) NDSU', '(4) SDSU', '(13) NMSU', 
 	'(6) BAY', '(11) NEB', '(3) CREI', '(14) ULL', '(7) ORE', '(10) BYU', '(2) WIS', '(15) AMER', 
-'(1) WICH', '(16) CP/TXSO', '(8) UK', '(9) KSU', '(5) SLU', '(12) NCST', '(4) LOU', '(13) MAN', 
-		'(6) MASS', '(11) IOWA/TENN', '(3) DUKE', '(14) MER', '(7) TEX', '(10) ASU', '(2) MICH', '(15) WOF', ]
+'(1) WICH', '(16) CP', '(8) UK', '(9) KSU', '(5) SLU', '(12) NCST', '(4) LOU', '(13) MAN', 
+		'(6) MASS', '(11) TENN', '(3) DUKE', '(14) MER', '(7) TEX', '(10) ASU', '(2) MICH', '(15) WOF', ]
 	
 var seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
 			1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
