@@ -3,10 +3,10 @@ $(document).ready(function(){
 //define our team list!
 var teams = ['(1) UK', '(16) HAM/MAN', '(8) CIN', '(9) PUR', '(5) WVU', '(12) BUFF', '(4) MD', '(13) VALP', 
 		'(6) BUT', '(11) TEX', '(3) ND', '(14) NE', '(7) WICH', '(10) IND', '(2) KU', '(15) NMSU', 
-'(1) WIS', '(16) CCAR', '(8) ORE', ' (9) OKST', '(5) ARK', ' (12) WOF', '(4) UNC', '(13) HARV', 
-		'(6) XAV', '(11) BYU/MISS', '(3) BAY', '(14) GAST', '(7) VCU', '(10) OSU', '(2) ARIZ', '(15) TXSO', 
 '(1) VILL', '(16) LAF', '(8) NCST', '(9) LSU', '(5) UNI', '(12) WYO', '(4) LOU', '(13) UCI', 
-	'(6) PROV', '(11) BSU/DAY', '(3) OKLA', '(14) ALB', '(7) MSU', '(10) UGA', '(2) UVA', '(15) BEL', 
+	'(6) PROV', '(11) BSU/DAY', '(3) OKLA', '(14) ALB', '(7) MSU', '(10) UGA', '(2) UVA', '(15) BEL',
+'(1) WIS', '(16) CCAR', '(8) ORE', ' (9) OKST', '(5) ARK', ' (12) WOF', '(4) UNC', '(13) HARV', 
+		'(6) XAV', '(11) BYU/MISS', '(3) BAY', '(14) GAST', '(7) VCU', '(10) OSU', '(2) ARIZ', '(15) TXSO',  
 '(1) DUKE', '(16) UNF/RMU', '(8) SDSU', '(9) SJU', '(5) UTAH', '(12) SFA', '(4) GTWN', '(13) EWU', 
 		'(6) SMU', '(11) UCLA', '(3) ISU', '(14) UAB', '(7) IOWA', '(10) DAV', '(2) GONZ', '(15) NDSU', ]
 	
