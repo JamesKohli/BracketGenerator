@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
 //define our team list!
-var teams = ['(1) FLA', '(16) ALBY', '(8) COLO', '(9) PITT', '(5) VCU', '(12) SFA', '(4) UCLA', '(13) TLSA', 
-		'(6) OSU', '(11) DAY', '(3) SYR', '(14) WMU', '(7) UNM', '(10) STAN', '(2) KU', '(15) EKY', 
-'(1) UVA', '(16) CCAR', '(8) MEM', ' (9) GW', '(5) CIN', ' (12) HARV', '(4) MSU', '(13) DEL', 
-		'(6) UNC', '(11) PROV', '(3) ISU', '(14) NCCU', '(7) CONN', '(10) JOES', '(2) VILL', '(15) MILW', 
-'(1) ARIZ', '(16) WEB', '(8) GONZ', '(9) OKST', '(5) OKLA', '(12) NDSU', '(4) SDSU', '(13) NMSU', 
-	'(6) BAY', '(11) NEB', '(3) CREI', '(14) ULL', '(7) ORE', '(10) BYU', '(2) WIS', '(15) AMER', 
-'(1) WICH', '(16) CP', '(8) UK', '(9) KSU', '(5) SLU', '(12) NCST', '(4) LOU', '(13) MAN', 
-		'(6) MASS', '(11) TENN', '(3) DUKE', '(14) MER', '(7) TEX', '(10) ASU', '(2) MICH', '(15) WOF', ]
+var teams = ['(1) UK', '(16) HAM/MAN', '(8) CIN', '(9) PUR', '(5) WVU', '(12) BUFF', '(4) MD', '(13) VALP', 
+		'(6) BUT', '(11) TEX', '(3) ND', '(14) NE', '(7) WICH', '(10) IND', '(2) KU', '(15) NMSU', 
+'(1) WIS', '(16) CCAR', '(8) ORE', ' (9) OKST', '(5) ARK', ' (12) WOF', '(4) UNC', '(13) HARV', 
+		'(6) XAV', '(11) BYU/MISS', '(3) BAY', '(14) GAST', '(7) VCU', '(10) OSU', '(2) ARIZ', '(15) TXSO', 
+'(1) VILL', '(16) LAF', '(8) NCST', '(9) LSU', '(5) UNI', '(12) WYO', '(4) LOU', '(13) UCI', 
+	'(6) PROV', '(11) BSU/DAY', '(3) OKLA', '(14) ALB', '(7) MSU', '(10) UGA', '(2) UVA', '(15) BEL', 
+'(1) DUKE', '(16) UNF/RMU', '(8) SDSU', '(9) SJU', '(5) UTAH', '(12) SFA', '(4) GTWN', '(13) EWU', 
+		'(6) SMU', '(11) UCLA', '(3) ISU', '(14) UAB', '(7) IOWA', '(10) DAV', '(2) GONZ', '(15) NDSU', ]
 	
 var seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
 			1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15, 
